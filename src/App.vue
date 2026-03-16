@@ -12,10 +12,10 @@
         </div>
 
         <div class="cards-grid">
-          <div class="card">Counting Game</div>
-          <div class="card">Addition Practice</div>
-          <div class="card">Hint Challenge</div>
-          <div class="card">Reward Chest</div>
+          <CardBase>Counting Game</CardBase>
+          <CardBase>Addition Practice</CardBase>
+          <CardBase>Hint Challenge</CardBase>
+          <CardBase>Reward Chest</CardBase>
         </div>
 
         <game-page />
@@ -30,6 +30,7 @@
 import GamePage from './pages/Game.vue'
 import AppHeader from './components/AppHeader.vue'
 import AppSidebar from './components/AppSidebar.vue'
+import CardBase from './components/CardBase.vue'
 </script>
 
 <style scoped>
