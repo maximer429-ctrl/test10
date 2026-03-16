@@ -51,7 +51,10 @@ function handlePlay() {
 function openProfile(){
   showProfile.value = true
   showGame.value = false
+  // persist the current view so it survives refresh
+  localStorage.setItem('ks_current_view', 'profile')
 }
+
 
 onMounted(() => {
   const v = localStorage.getItem('ks_current_view')
