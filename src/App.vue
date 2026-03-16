@@ -3,7 +3,7 @@
     <AppHeader />
 
     <main class="app-shell">
-      <AppSidebar />
+      <AppSidebar @open-profile="openProfile" />
 
       <section class="content">
         <LandingPage @play="handlePlay" v-if="!showGame && !showProfile" />
