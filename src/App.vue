@@ -6,19 +6,13 @@
       <AppSidebar />
 
       <section class="content">
-        <div class="hero">
-          <div class="title">Welcome back, Alex!</div>
-          <div class="subtitle">Ready for a quick challenge? Let's try a new level.</div>
-        </div>
+        <LandingPage @play="handlePlay" v-if="!showGame" />
 
-        <div class="cards-grid">
-          <CardBase>Counting Game</CardBase>
-          <CardBase>Addition Practice</CardBase>
-          <CardBase>Hint Challenge</CardBase>
-          <CardBase>Reward Chest</CardBase>
-        </div>
+        <Onboarding v-if="showOnboarding && !consentGiven" @request-parent-consent="showConsent = true" @skip-onboarding="startGame" />
 
-        <game-page />
+        <ParentConsent v-if="showConsent" @consented="onConsented" @cancel="showConsent = false" />
+
+        <GamePage v-else-if="showGame" />
       </section>
     </main>
 
@@ -31,6 +25,36 @@ import GamePage from './pages/Game.vue'
 import AppHeader from './components/AppHeader.vue'
 import AppSidebar from './components/AppSidebar.vue'
 import CardBase from './components/CardBase.vue'
+import LandingPage from './pages/Landing.vue'
+import Onboarding from './pages/Onboarding.vue'
+import ParentConsent from './pages/ParentConsent.vue'
+
+import { ref } from 'vue'
+
+const showGame = ref(false)
+const showOnboarding = ref(false)
+const showConsent = ref(false)
+const consentGiven = ref(localStorage.getItem('ks_parent_consent') === 'true')
+
+function handlePlay() {
+  if (consentGiven.value) {
+    startGame()
+  } else {
+    showOnboarding.value = true
+  }
+}
+
+function startGame() {
+  showOnboarding.value = false
+  showConsent.value = false
+  showGame.value = true
+}
+
+function onConsented() {
+  consentGiven.value = true
+  localStorage.setItem('ks_parent_consent', 'true')
+  startGame()
+}
 </script>
 
 <style scoped>
