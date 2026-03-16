@@ -69,6 +69,38 @@ Feature 2.2 — Customization & Avatars
 
 ---
 
+Feature 2.3 — Profile Management
+
+- Epic 2 > Feature 2.3 > Story 2.3.1 — Profile view (🔴 Must have)
+  - Acceptance criteria:
+    1. A persistent, accessible profile screen is available from the app shell.
+    2. Profile shows child's display name, selected avatar, badges earned, and basic session stats (rounds, accuracy).
+    3. Parents can toggle a "guest/session-only" mode and view or hide sensitive options.
+
+- Epic 2 > Feature 2.3 > Story 2.3.2 — Edit profile (🔴 Must have)
+  - Acceptance criteria:
+    1. Child or parent can edit the display name and choose an avatar from the curated set.
+    2. All edits are validated for length and disallowed characters; avatar choices are sanitized.
+    3. Edits persist for the session and (optionally) persist across sessions only when parental consent is given.
+
+- Epic 2 > Feature 2.3 > Story 2.3.3 — Parental controls & consent management (🔴 Must have)
+  - Acceptance criteria:
+    1. Parents can access a parental controls area from the profile to manage consent, data sharing, and account-level settings.
+    2. Consent toggles (analytics, persistent storage) are clearly described and require explicit confirmation.
+    3. Changes to consent immediately affect analytics collection and persistence behavior.
+
+- Epic 2 > Feature 2.3 > Story 2.3.4 — Data export & deletion (🟡 Should have)
+  - Acceptance criteria:
+    1. Parents can request a session summary export (PDF/CSV) for the child's performance, behind parental confirmation.
+    2. Parents can request deletion of persisted profile data and clear local session data; deletion prompts confirmation and documents the effect.
+
+- Epic 2 > Feature 2.3 > Story 2.3.5 — Multiple profiles & quick-switch (🟢 Nice to have)
+  - Acceptance criteria:
+    1. App supports multiple local profiles (two or more), each with separate avatars and session state.
+    2. Quick-switch UI lets a parent or child switch between profiles without losing progress for other profiles.
+
+
+
 Epic 3 — Progress, Parents & Admin
 
 Feature 3.1 — Progress Tracking
