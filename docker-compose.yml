@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  dev:
+    build: .
+    image: kids-score-dev
+    volumes:
+      - ./:/workspace
+      - /workspace/node_modules
+    working_dir: /workspace
+    ports:
+      - "5173:5173"
+    command: sh -c "npm run dev -- --host 0.0.0.0 --port 5173"
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1:5173/"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
