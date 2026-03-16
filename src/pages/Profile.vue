@@ -19,7 +19,7 @@
             </div>
           </div>
           <div class="actions">
-            <button class="btn outline" @click="toggleEdit">{{ isEditing ? 'Close' : 'Edit Profile' }}</button>
+            <button class="btn btn-secondary" @click="toggleEdit">{{ isEditing ? 'Close' : 'Edit Profile' }}</button>
           </div>
         </div>
 
@@ -38,8 +38,8 @@
           </div>
 
           <div class="save-row">
-            <button class="btn" @click="save">Save</button>
-            <button class="btn ghost" @click="reset">Reset</button>
+            <button class="btn btn-primary" @click="save">Save</button>
+            <button class="btn btn-secondary" @click="reset">Reset</button>
           </div>
         </div>
 
@@ -52,7 +52,7 @@
               </div>
               <div class="small" style="margin-top:6px">Accuracy {{ recent.accuracy }}% • {{ recent.rounds }} rounds</div>
             </div>
-            <div class="details-btn"><button class="btn primary">View details</button></div>
+            <div class="details-btn"><button class="btn btn-primary">View details</button></div>
           </div>
         </div>
       </div>
