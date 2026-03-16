@@ -32,7 +32,7 @@ import Onboarding from './pages/Onboarding.vue'
 import ParentConsent from './pages/ParentConsent.vue'
 import Profile from './pages/Profile.vue'
 
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 const showGame = ref(false)
 const showProfile = ref(false)
@@ -53,10 +53,20 @@ function openProfile(){
   showGame.value = false
 }
 
+onMounted(() => {
+  const v = localStorage.getItem('ks_current_view')
+  if (v === 'profile') {
+    showProfile.value = true
+  } else if (v === 'game') {
+    showGame.value = true
+  }
+})
+
 function startGame() {
   showOnboarding.value = false
   showConsent.value = false
   showGame.value = true
+  localStorage.setItem('ks_current_view', 'game')
 }
 
 function onConsented() {

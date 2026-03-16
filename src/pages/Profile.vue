@@ -40,9 +40,9 @@
 import { reactive, ref, onMounted } from 'vue'
 
 const avatars = [
-  '/mockups/avatar-1.png',
-  '/mockups/avatar-2.png',
-  '/mockups/avatar-3.png'
+  '/mockups/avatar-1.svg',
+  '/mockups/avatar-2.svg',
+  '/mockups/avatar-3.svg'
 ]
 
 const defaultProfile = { name: 'Player', avatar: avatars[0] }
