@@ -8,3 +8,4 @@
 [2.3.3]|mockups/2.3.3-parental-controls.html|pending
 [2.3.4]|mockups/2.3.4-data-export-deletion.html|pending
 [2.3.5]|mockups/2.3.5-multiple-profiles.html|pending
+[2.3.0]|mockups/2.3.0-create-profile.html|pending

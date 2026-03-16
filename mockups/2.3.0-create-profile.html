@@ -1,0 +1,62 @@
+<!--
+MOCKUP-ID: 2.3.0
+Title: Create Profile
+Story: 2.3.0
+Design-System-Refs: inputs, avatars, validation, accessibility, buttons, surface
+Notes:
+  - Demonstrates profile creation flow: name + avatar, inline validation, session-only default, parental-consent hint, accessible controls
+-->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Mockup 2.3.0 — Create Profile</title>
+<style>
+:root{--primary:#3B82F6;--accent:#10B981;--surface:#F8FAFC;--bg:#fff;--text:#0F172A;--muted:#64748B;--radius:12px;--space:16px}
+*{box-sizing:border-box}
+body{font-family:Poppins,Segoe UI,Roboto,Arial,sans-serif;margin:0;background:linear-gradient(#F6F9FF,#FFFFFF);color:var(--text);padding:var(--space)}
+.panel{max-width:520px;margin:20px auto;background:var(--surface);padding:20px;border-radius:12px;border:1px solid #E6EDF8}
+.header{font-weight:700;font-size:1.1rem;margin-bottom:8px}
+.label{font-size:0.9rem;color:var(--muted);margin-bottom:6px}
+.input{width:100%;padding:10px;border-radius:8px;border:1px solid #DCE9FF;background:#fff;margin-bottom:10px}
+.avatars{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.avatar{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#fff;border:2px solid transparent;cursor:pointer}
+.avatar.sel{border-color:var(--primary)}
+.hint{font-size:0.9rem;color:var(--muted);margin-bottom:12px}
+.err{color:#B91C1C;font-weight:700;font-size:0.9rem;display:none;margin-bottom:8px}
+.row{display:flex;gap:8px}
+.btn{flex:1;padding:10px;border-radius:10px;border:none;font-weight:700;cursor:pointer}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-ghost{background:transparent;border:2px solid #E6EDF8}
+.switch{display:flex;gap:8px;align-items:center}
+.small{font-size:0.85rem;color:var(--muted)}
+</style>
+</head>
+<body>
+  <main class="panel" role="region" aria-labelledby="create-title">
+    <h1 id="create-title" class="header">Create a new profile</h1>
+    <div class="label">Display name</div>
+    <input class="input" type="text" aria-label="Display name" maxlength="20" placeholder="Enter a display name" />
+    <div class="err" id="name-error" aria-live="assertive">Invalid characters removed</div>
+
+    <div class="label">Choose an avatar</div>
+    <div class="avatars" role="list">
+      <div class="avatar sel" role="button" aria-pressed="true">🙂</div>
+      <div class="avatar" role="button">🦊</div>
+      <div class="avatar" role="button">🦄</div>
+      <div class="avatar" role="button">🐙</div>
+    </div>
+
+    <div class="hint">By default profiles are session-only. To persist across devices, enable parental consent after creation.</div>
+
+    <div style="margin-top:8px" class="label">Accessibility</div>
+    <div class="small">All controls are keyboard-focusable and labeled for screen readers.</div>
+
+    <div style="margin-top:16px" class="row">
+      <button class="btn btn-ghost">Cancel</button>
+      <button class="btn btn-primary">Create profile</button>
+    </div>
+  </main>
+</body>
+</html>
