@@ -53,6 +53,7 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import * as persistence from '../lib/persistence'
 
 const rounds = 3
 const round = ref(1)
@@ -96,6 +97,18 @@ function submit() {
   summaryVisible.value = true
 
   if (tapped === total && tapped > 0) correctRounds.value++
+  // update persistent stats for the session
+  try {
+    const prev = persistence.loadStats()
+    const prevRounds = prev.rounds || 0
+    const prevAccuracy = prev.accuracy || 0
+    const newRounds = prevRounds + 1
+    const newAccuracy = Math.round(((prevAccuracy * prevRounds) + accuracy) / newRounds)
+    persistence.saveStats({ rounds: newRounds, accuracy: newAccuracy })
+  } catch (e) {
+    // ignore storage errors
+    console.warn('persist stats failed', e)
+  }
 }
 
 function nextRound() {
