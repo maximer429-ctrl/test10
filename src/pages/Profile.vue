@@ -62,6 +62,7 @@
 
 <script setup>
 import { reactive, ref, onMounted } from 'vue'
+import { loadProfile as loadProfileFromStorage, saveProfile, loadStats as loadStatsFromStorage, saveStats } from '../lib/persistence'
 
 const avatars = [
   '/mockups/avatar-1.svg',
@@ -77,23 +78,26 @@ const stats = reactive({ rounds: 0, accuracy: 0 })
 const recent = reactive({ rounds: 0, accuracy: 0 })
 const isEditing = ref(false)
 
+
 function loadProfile(){
-  // session storage always available
-  const s = sessionStorage.getItem('ks_profile')
-  if (s) Object.assign(profile, JSON.parse(s))
-  // load stats from session if present
-  const st = sessionStorage.getItem('ks_stats')
-  if (st) Object.assign(stats, JSON.parse(st))
-  // populate recent with a simple sample or from stats
+  const p = loadProfileHelper()
+  if (p) Object.assign(profile, p)
+  const st = loadStatsFromStorage()
+  if (st) Object.assign(stats, st)
   recent.rounds = stats.rounds || 0
   recent.accuracy = stats.accuracy || 0
 }
 
+function loadProfileHelper(){
+  try { return loadProfileFromStorage() } catch (e) { return null }
+}
+
 function save(){
-  sessionStorage.setItem('ks_profile', JSON.stringify(profile))
-  // persist across sessions only with parental consent
-  if (localStorage.getItem('ks_parent_consent') === 'true'){
-    localStorage.setItem('ks_profile', JSON.stringify(profile))
+  try {
+    saveProfile({ name: profile.name, avatar: profile.avatar, age: profile.age, level: profile.level })
+    saveStats({ rounds: stats.rounds, accuracy: stats.accuracy })
+  } catch (e) {
+    // noop
   }
 }
 
