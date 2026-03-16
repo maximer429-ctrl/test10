@@ -1,0 +1,133 @@
+<!--
+  MOCKUP-ID: 4.1.1
+  Title: Public Landing Page
+  Story: 4.1.1
+  Design-System-Refs: primary, accent, secondary, background, surface, text-primary, text-muted, border, font-family-base, font-size-h1, space-m, radius-lg, hero-illustration
+  Notes:
+    - This mockup demonstrates AC1-AC5 from BACKLOG.md
+    - SEO/analytics placeholders shown as labeled non-functional elements (no JS in mockup)
+-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Playful Math for Kids — Learn through mini-games</title>
+  <meta name="description" content="Playful, safe math mini-games for children aged 8–10. Practice number sense with adaptive games and supportive feedback.">
+  <meta name="robots" content="index, follow">
+  <style>
+    :root{
+      --primary:#3B82F6; --secondary:#F59E0B; --accent:#10B981; --background:#FFFFFF; --surface:#F8FAFC;
+      --text-primary:#0F172A; --text-muted:#64748B; --border:#E2E8F0; --radius:12px; --space:16px; --font:Poppins, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{font-family:var(--font);margin:0;background:linear-gradient(180deg,#EFF6FF 0%, #FFFFFF 60%);color:var(--text-primary);}
+    .container{max-width:980px;margin:0 auto;padding:var(--space)}
+    header{display:flex;align-items:center;justify-content:space-between;padding:calc(var(--space)/2) 0}
+    .logo{display:flex;align-items:center;gap:10px}
+    .logo-mark{width:44px;height:44px;border-radius:10px;background:var(--primary);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+    .nav{display:flex;gap:12px}
+    .cta-parent{background:transparent;border:2px solid var(--secondary);padding:8px 12px;border-radius:10px;color:var(--text-primary)}
+    .cta-play{background:var(--primary);color:#fff;padding:10px 16px;border-radius:10px;border:none;font-weight:700}
+
+    /* Hero */
+    .hero{display:flex;flex-direction:column;gap:20px;padding:var(--space) 0;align-items:center;text-align:center}
+    .hero-inner{display:flex;flex-direction:column;gap:20px;align-items:center;width:100%}
+    .hero h1{font-size:1.6rem;margin:0}
+    .hero p{color:var(--text-muted);max-width:640px}
+    .hero-cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+
+    /* Illustration / screenshot */
+    .hero-illustration{width:100%;max-width:720px;border-radius:16px;padding:18px;background:var(--surface);border:1px solid var(--border);box-shadow:0 8px 24px rgba(15,23,42,0.06)}
+    .screenshot{display:flex;gap:16px;align-items:center;justify-content:space-between}
+    .device{width:52%;background:#fff;border-radius:12px;padding:12px;border:1px solid var(--border)}
+    .panel{width:44%;display:flex;flex-direction:column;gap:12px}
+    .feature-card{background:linear-gradient(180deg,#fff,#F8FAFC);padding:12px;border-radius:10px;border:1px solid var(--border)}
+
+    /* COPPA / privacy */
+    .privacy{font-size:0.9rem;color:var(--text-muted);display:flex;gap:10px;align-items:center;justify-content:center}
+    .privacy a{color:var(--primary);text-decoration:none;font-weight:600}
+
+    /* Footer SEO/analytics placeholder */
+    .meta-box{margin-top:18px;padding:12px;border-radius:10px;background:#fff;border:1px dashed var(--border);color:var(--text-muted);font-size:0.85rem}
+
+    @media(min-width:800px){
+      .hero{flex-direction:row;align-items:center;text-align:left}
+      .hero-inner{flex:1;align-items:flex-start}
+      .hero-illustration{flex:1}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <div class="logo-mark">PM</div>
+        <div>
+          <div style="font-weight:700">Playful Math</div>
+          <div style="font-size:0.8rem;color:var(--text-muted)">For kids 8–10</div>
+        </div>
+      </div>
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="cta-parent" href="#parents">For Parents</a>
+        <button class="cta-play" aria-label="Play Now">Play Now</button>
+      </nav>
+    </header>
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <h1 id="hero-title">Learn math with short, playful mini-games.</h1>
+        <p>Adaptive, scaffolded games that build confidence. Safe, COPPA-aware, and designed for repeated practice.</p>
+        <div class="hero-cta">
+          <button class="cta-play" aria-label="Play Now">Play Now</button>
+          <a class="cta-parent" href="#parents">For Parents</a>
+        </div>
+
+        <div class="privacy">Privacy: <span style="margin-left:6px">COPPA-aware notice — <a href="#consent">Parental consent flow</a></span></div>
+      </div>
+
+      <div class="hero-illustration" role="img" aria-label="Illustration showing a child-friendly counting mini-game">
+        <div class="screenshot">
+          <div class="device">
+            <!-- small visual mock of a mini-game screen -->
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+              <div style="font-weight:700">Counting Game</div>
+              <div style="background:var(--accent);color:#fff;padding:6px 8px;border-radius:8px;font-weight:700;font-size:0.8rem">New</div>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <div style="width:56px;height:56px;border-radius:999px;background:#FEF3C7;display:flex;align-items:center;justify-content:center">🍎</div>
+              <div style="width:56px;height:56px;border-radius:999px;background:#EFF6FF;display:flex;align-items:center;justify-content:center">🍎</div>
+              <div style="width:56px;height:56px;border-radius:999px;background:#FEF3C7;display:flex;align-items:center;justify-content:center">🍎</div>
+              <div style="width:56px;height:56px;border-radius:999px;background:#EFF6FF;display:flex;align-items:center;justify-content:center">🍎</div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="feature-card">
+              <div style="font-weight:700;margin-bottom:6px">Safe by default</div>
+              <div style="color:var(--text-muted);font-size:0.9rem">No tracking in children's flows without parental consent.</div>
+            </div>
+            <div class="feature-card">
+              <div style="font-weight:700;margin-bottom:6px">Adaptive</div>
+              <div style="color:var(--text-muted);font-size:0.9rem">Difficulty adjusts after successful rounds to keep kids challenged.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="meta-box" aria-hidden="false">
+      <strong>SEO & Analytics (mock)</strong>
+      <div style="margin-top:8px;color:var(--text-muted)">Meta tags present above. Analytics: <em>privacy-safe placeholder</em> — collect only anonymized engagement metrics and respect parental consent before enabling detailed tracking.</div>
+    </div>
+
+    <footer style="margin-top:24px;padding:18px 0;text-align:center;color:var(--text-muted);font-size:0.9rem">
+      <div id="parents">
+        <h3 style="margin-bottom:8px">For parents</h3>
+        <p style="max-width:680px;margin:0 auto">We store progress only with parental consent. Visit the parental consent flow to enable account features and longer-term progress tracking.</p>
+        <p style="margin-top:12px"><a href="#consent" style="color:var(--primary);font-weight:700">Open parental consent flow</a></p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
