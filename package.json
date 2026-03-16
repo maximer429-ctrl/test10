@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vite",
+    "test": "vitest",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -13,5 +14,6 @@
   "devDependencies": {
     "vite": "^5.0.0",
     "@vitejs/plugin-vue": "^4.0.0"
+    
   }
 }
