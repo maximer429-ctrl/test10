@@ -98,3 +98,18 @@ Feature 3.2 — Content Management
 Notes
 - Each story should be broken into development tasks when ready for implementation.
 - Priorities reflect a first-launch MVP (Core Learning + basic Progress) then Engagement and Admin features.
+
+---
+
+Epic 4 — Landing & Onboarding
+
+Feature 4.1 — Landing page
+
+- Epic 4 > Feature 4.1 > Story 4.1.1 — Public landing page (🔴 Must have)
+  - Acceptance criteria:
+    1. Landing page clearly communicates product value, target age (8–10), and primary CTAs: "Play Now" and "For Parents".
+    2. Page loads responsively on desktop and tablet, and renders correctly on common mobile viewports.
+    3. Includes concise privacy & COPPA notice and a link to parental consent flow.
+    4. Hero section includes a short animated screenshot or illustration demonstrating a mini-game.
+    5. Basic SEO metadata and analytics (privacy-safe) are present; analytics respect parental consent settings.
+
