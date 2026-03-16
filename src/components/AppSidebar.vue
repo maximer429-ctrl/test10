@@ -4,7 +4,7 @@
       <li><a class="active">🏠 Home</a></li>
       <li><a>🎯 Practice</a></li>
       <li><a>🏆 Rewards</a></li>
-      <li><a>👪 Profile</a></li>
+      <li><button class="link-btn" @click="$emit('open-profile')">👪 Profile</button></li>
     </ul>
   </aside>
 </template>

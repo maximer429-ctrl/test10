@@ -6,11 +6,13 @@
       <AppSidebar />
 
       <section class="content">
-        <LandingPage @play="handlePlay" v-if="!showGame" />
+        <LandingPage @play="handlePlay" v-if="!showGame && !showProfile" />
 
         <Onboarding v-if="showOnboarding && !consentGiven" @request-parent-consent="showConsent = true" @skip-onboarding="startGame" />
 
         <ParentConsent v-if="showConsent" @consented="onConsented" @cancel="showConsent = false" />
+
+        <Profile v-else-if="showProfile" />
 
         <GamePage v-else-if="showGame" />
       </section>
@@ -28,10 +30,12 @@ import CardBase from './components/CardBase.vue'
 import LandingPage from './pages/Landing.vue'
 import Onboarding from './pages/Onboarding.vue'
 import ParentConsent from './pages/ParentConsent.vue'
+import Profile from './pages/Profile.vue'
 
 import { ref } from 'vue'
 
 const showGame = ref(false)
+const showProfile = ref(false)
 const showOnboarding = ref(false)
 const showConsent = ref(false)
 const consentGiven = ref(localStorage.getItem('ks_parent_consent') === 'true')
@@ -42,6 +46,11 @@ function handlePlay() {
   } else {
     showOnboarding.value = true
   }
+}
+
+function openProfile(){
+  showProfile.value = true
+  showGame.value = false
 }
 
 function startGame() {
