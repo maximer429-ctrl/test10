@@ -126,7 +126,7 @@ onMounted(()=>{
 .stats{display:flex;gap:12px;margin-top:12px}
 .stat{background:var(--bg);padding:10px;border-radius:10px;flex:1;text-align:center;border:1px solid #E9F2FF}
 .stat-value{font-weight:700;font-size:1.1rem}
-.badges{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.badges{display:flex;gap:8px;margin-top:12px;margin-bottom:12px;flex-wrap:wrap}
 .badge{background:var(--color-accent);color:#fff;padding:6px 10px;border-radius:999px;font-weight:700;font-size:0.85rem}
 .actions{min-width:120px;display:flex;align-items:flex-start}
 .btn{padding:8px 12px;border-radius:10px;border:none;background:#f1f5f9;font-weight:700}
@@ -135,6 +135,7 @@ onMounted(()=>{
 .btn.btn-secondary{background:transparent;border:2px solid var(--color-secondary);color:var(--color-text)}
 .btn.ghost{background:transparent;border:1px solid rgba(0,0,0,0.06)}
 .edit-section{margin-top:12px}
+.section{margin-top:20px}
 .avatar-list{display:flex;gap:8px;margin:8px 0}
 .avatar-btn{border:2px solid transparent;padding:4px;border-radius:8px;background:transparent}
 .avatar-btn.selected{border-color:var(--color-primary)}
