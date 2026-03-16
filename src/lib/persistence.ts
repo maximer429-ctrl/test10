@@ -41,3 +41,36 @@ export function saveStats(stats: Stats) {
     sessionStorage.setItem(STATS_KEY, JSON.stringify(stats))
   } catch (e) {}
 }
+
+export function exportAll() {
+  try {
+    const profile = (() => {
+      const s = sessionStorage.getItem(PROFILE_KEY)
+      if (s) return JSON.parse(s)
+      const l = localStorage.getItem(PROFILE_KEY)
+      if (l) return JSON.parse(l)
+      return null
+    })()
+    const stats = (() => {
+      const s = sessionStorage.getItem(STATS_KEY)
+      if (s) return JSON.parse(s)
+      const l = localStorage.getItem(STATS_KEY)
+      if (l) return JSON.parse(l)
+      return null
+    })()
+    const consent = localStorage.getItem(CONSENT_KEY) || null
+    return { profile, stats, consent }
+  } catch (e) {
+    return { profile: null, stats: null, consent: null }
+  }
+}
+
+export function deleteAll() {
+  try {
+    sessionStorage.removeItem(PROFILE_KEY)
+    sessionStorage.removeItem(STATS_KEY)
+    localStorage.removeItem(PROFILE_KEY)
+    localStorage.removeItem(STATS_KEY)
+    // do not remove consent implicitly in deleteAll — keep parent's choice unless explicitly requested
+  } catch (e) {}
+}
