@@ -8,13 +8,19 @@
     </ul>
 
     <div style="margin-top:12px">
-      <ProfileManager @profile-changed="$emit('profile-changed')" />
+      <button class="btn btn-ghost" @click="showManager = !showManager">Manage profiles</button>
+      <div v-if="showManager" style="margin-top:8px">
+        <ProfileManager @profile-changed="$emit('profile-changed')" />
+      </div>
     </div>
   </aside>
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import ProfileManager from './ProfileManager.vue'
+
+const showManager = ref(false)
 </script>
 
 <style scoped>
