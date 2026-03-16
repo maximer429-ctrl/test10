@@ -1,0 +1,404 @@
+<!--
+  MOCKUP-ID: 1.1.1
+  Title: Counting Game
+  Story: 1.1.1
+  Design-System-Refs: primary, accent, secondary, surface, background, text-primary, text-muted, border, muted-fill, success, font-family-base, font-size-h1, font-size-h3, space-s, space-m, space-l, space-xl, space-xxl, radius-md, radius-lg, elevation-1, elevation-2, tap-target-min, Progress Bar, Card, Button/Primary, Button/Secondary
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup 1.1.1 — Counting Game</title>
+  <style>
+    :root {
+      --primary:      #3B82F6;
+      --secondary:    #F59E0B;
+      --accent:       #10B981;
+      --background:   #FFFFFF;
+      --surface:      #F8FAFC;
+      --text-primary: #0F172A;
+      --text-muted:   #64748B;
+      --border:       #E2E8F0;
+      --shadow-1:     rgba(15,23,42,0.06);
+      --shadow-2:     rgba(15,23,42,0.10);
+      --success:      #10B981;
+      --danger:       #EF4444;
+      --focus-ring:   #A78BFA;
+      --muted-fill:   #EFF6FF;
+      --font:         Poppins, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --space-xxs: 4px;  --space-xs: 8px;  --space-s: 12px;
+      --space-m: 16px;   --space-l: 24px;  --space-xl: 32px;  --space-xxl: 48px;
+      --radius-sm: 6px;  --radius-md: 12px; --radius-lg: 18px;
+      --tap-min: 44px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font);
+      background: #DBEAFE;
+      color: var(--text-primary);
+      font-size: 1rem;
+      line-height: 1.4;
+      padding: var(--space-m);
+    }
+
+    /* ── Section wrapper ── */
+    .section { margin-bottom: var(--space-xxl); }
+    .section-label {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: var(--border);
+      border-radius: var(--radius-sm);
+      padding: 3px 10px;
+      margin-bottom: var(--space-s);
+    }
+
+    /* ── Phone shell ── */
+    .phone {
+      max-width: 390px;
+      margin: 0 auto;
+      background: var(--background);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px var(--shadow-2), 0 1px 2px var(--shadow-1);
+      border: 1px solid var(--border);
+    }
+
+    /* ── Top bar ── */
+    .topbar {
+      background: var(--primary);
+      padding: var(--space-m) var(--space-l);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #fff;
+    }
+    .topbar-title { font-size: 1.1rem; font-weight: 700; }
+    .topbar-badge {
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: rgba(255,255,255,0.22);
+      border-radius: var(--radius-lg);
+      padding: 3px 12px;
+    }
+
+    /* ── Progress bar (AC3 reference) ── */
+    .progress-wrap { padding: var(--space-s) var(--space-l) 0; background: var(--background); }
+    .progress-meta { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 4px; }
+    .progress-track { height: 8px; background: var(--border); border-radius: 99px; overflow: hidden; }
+    .progress-fill  { height: 100%; background: var(--accent); border-radius: 99px; }
+
+    /* ── Game area ── */
+    .game-area { padding: var(--space-l); }
+    .game-prompt {
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: var(--space-l);
+    }
+
+    /* ── Object grid ── */
+    .objects-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-s);
+      justify-content: center;
+      margin-bottom: var(--space-l);
+    }
+    .obj {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--muted-fill);
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      position: relative;
+    }
+    .obj--tapped {
+      background: #D1FAE5;
+      border-color: var(--accent);
+    }
+    .obj--tapped::after {
+      content: '✓';
+      position: absolute;
+      top: -7px; right: -7px;
+      width: 20px; height: 20px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 0.65rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── Counter ── */
+    .counter-display {
+      text-align: center;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1;
+      margin-bottom: var(--space-xxs);
+    }
+    .counter-hint {
+      text-align: center;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: var(--space-m);
+    }
+
+    /* ── Buttons ── */
+    .btn-row { display: flex; gap: var(--space-s); padding: var(--space-s) var(--space-l) var(--space-l); }
+    .btn {
+      flex: 1;
+      min-height: var(--tap-min);
+      border-radius: var(--radius-md);
+      font-family: var(--font);
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-s) var(--space-m);
+    }
+    .btn-primary   { background: var(--primary); color: #fff; }
+    .btn-secondary { background: transparent; border: 2px solid var(--secondary); color: var(--text-primary); }
+
+    /* ── Summary card (AC3) ── */
+    .summary-card {
+      margin: var(--space-l);
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      padding: var(--space-l);
+      border: 1px solid var(--border);
+      box-shadow: 0 6px 20px var(--shadow-2);
+      text-align: center;
+    }
+    .summary-icon  { font-size: 3rem; margin-bottom: var(--space-s); }
+    .summary-title { font-size: 1.5rem; font-weight: 700; margin-bottom: var(--space-xxs); }
+    .summary-sub   { font-size: 0.875rem; color: var(--text-muted); margin-bottom: var(--space-l); }
+    .stat-row      { display: flex; gap: var(--space-m); }
+    .stat-box      {
+      flex: 1;
+      background: var(--background);
+      border-radius: var(--radius-md);
+      padding: var(--space-m);
+      border: 1px solid var(--border);
+    }
+    .stat-value { font-size: 1.75rem; font-weight: 700; color: var(--primary); line-height: 1; }
+    .stat-label { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; }
+
+    /* ── Level-up banner (AC4) ── */
+    .levelup-banner {
+      margin: var(--space-m) var(--space-l) 0;
+      background: linear-gradient(135deg, #D1FAE5, #A7F3D0);
+      border: 1px solid var(--accent);
+      border-radius: var(--radius-md);
+      padding: var(--space-s) var(--space-m);
+      display: flex;
+      align-items: center;
+      gap: var(--space-s);
+    }
+    .levelup-text { font-size: 0.875rem; font-weight: 700; color: #065F46; }
+
+    @media (min-width: 640px) {
+      body { padding: var(--space-xl); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════════
+       AC1 — Child can count objects on screen (1–20) by tapping
+       ══════════════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-label">AC1 — Active game: objects to count (range 1–20, none tapped yet)</div>
+    <div class="phone">
+      <header class="topbar">
+        <span class="topbar-title">Counting Game</span>
+        <span class="topbar-badge">Round 1 of 3</span>
+      </header>
+
+      <div class="progress-wrap">
+        <div class="progress-meta"><span>Correct rounds</span><span>0 / 3</span></div>
+        <div class="progress-track"
+             role="progressbar" aria-valuemin="0" aria-valuemax="3" aria-valuenow="0"
+             aria-label="Correct rounds: 0 of 3">
+          <div class="progress-fill" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <main class="game-area">
+        <p class="game-prompt">How many 🍎 do you see?</p>
+        <div class="objects-grid" aria-label="Apples to count, tap each one">
+          <div class="obj" role="button" aria-label="Apple 1">🍎</div>
+          <div class="obj" role="button" aria-label="Apple 2">🍎</div>
+          <div class="obj" role="button" aria-label="Apple 3">🍎</div>
+          <div class="obj" role="button" aria-label="Apple 4">🍎</div>
+          <div class="obj" role="button" aria-label="Apple 5">🍎</div>
+          <div class="obj" role="button" aria-label="Apple 6">🍎</div>
+          <div class="obj" role="button" aria-label="Apple 7">🍎</div>
+        </div>
+        <div class="counter-display" aria-live="polite" aria-label="Count so far: 0">0</div>
+        <div class="counter-hint">Tap each apple to count it</div>
+      </main>
+
+      <div class="btn-row">
+        <button class="btn btn-primary" aria-label="Submit my answer">Submit ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       AC2 — Immediate visual feedback for each correct tap
+       ══════════════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-label">AC2 — Visual feedback: tapped objects highlighted with green checkmark</div>
+    <div class="phone">
+      <header class="topbar">
+        <span class="topbar-title">Counting Game</span>
+        <span class="topbar-badge">Round 1 of 3</span>
+      </header>
+
+      <div class="progress-wrap">
+        <div class="progress-meta"><span>Correct rounds</span><span>0 / 3</span></div>
+        <div class="progress-track"
+             role="progressbar" aria-valuemin="0" aria-valuemax="3" aria-valuenow="0"
+             aria-label="Correct rounds: 0 of 3">
+          <div class="progress-fill" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <main class="game-area">
+        <p class="game-prompt">How many 🍎 do you see?</p>
+        <div class="objects-grid" aria-label="Apples to count">
+          <div class="obj obj--tapped" role="button" aria-label="Apple 1, counted" aria-pressed="true">🍎</div>
+          <div class="obj obj--tapped" role="button" aria-label="Apple 2, counted" aria-pressed="true">🍎</div>
+          <div class="obj obj--tapped" role="button" aria-label="Apple 3, counted" aria-pressed="true">🍎</div>
+          <div class="obj obj--tapped" role="button" aria-label="Apple 4, counted" aria-pressed="true">🍎</div>
+          <div class="obj" role="button" aria-label="Apple 5" aria-pressed="false">🍎</div>
+          <div class="obj" role="button" aria-label="Apple 6" aria-pressed="false">🍎</div>
+          <div class="obj" role="button" aria-label="Apple 7" aria-pressed="false">🍎</div>
+        </div>
+        <div class="counter-display" aria-live="polite" aria-label="Count so far: 4">4</div>
+        <div class="counter-hint">Keep going! 3 more to find.</div>
+      </main>
+
+      <div class="btn-row">
+        <button class="btn btn-primary" aria-label="Submit my answer">Submit ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       AC3 — Game reports score and accuracy at end of round
+       ══════════════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-label">AC3 — End of round: score and accuracy report</div>
+    <div class="phone">
+      <header class="topbar">
+        <span class="topbar-title">Counting Game</span>
+        <span class="topbar-badge">Round done!</span>
+      </header>
+
+      <div class="progress-wrap">
+        <div class="progress-meta"><span>Correct rounds</span><span>2 / 3</span></div>
+        <div class="progress-track"
+             role="progressbar" aria-valuemin="0" aria-valuemax="3" aria-valuenow="2"
+             aria-label="Correct rounds: 2 of 3">
+          <div class="progress-fill" style="width: 67%"></div>
+        </div>
+      </div>
+
+      <div class="summary-card" role="region" aria-label="Round summary">
+        <div class="summary-icon" aria-hidden="true">🎉</div>
+        <div class="summary-title">Great job!</div>
+        <div class="summary-sub">Here's how you did this round</div>
+        <div class="stat-row">
+          <div class="stat-box">
+            <div class="stat-value">7</div>
+            <div class="stat-label">Score</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value">1</div>
+            <div class="stat-label">Missed</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value">88%</div>
+            <div class="stat-label">Accuracy</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-primary" aria-label="Play next round">Next round →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       AC4 — Game adapts: after 3 correct rounds, range increases
+       ══════════════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-label">AC4 — Adapted difficulty: range increased after 3 correct rounds</div>
+    <div class="phone">
+      <header class="topbar">
+        <span class="topbar-title">Counting Game</span>
+        <span class="topbar-badge">Round 4</span>
+      </header>
+
+      <div class="progress-wrap">
+        <div class="progress-meta"><span>Correct rounds</span><span>3 / 3 ✓</span></div>
+        <div class="progress-track"
+             role="progressbar" aria-valuemin="0" aria-valuemax="3" aria-valuenow="3"
+             aria-label="Correct rounds: 3 of 3, level complete">
+          <div class="progress-fill" style="width: 100%"></div>
+        </div>
+      </div>
+
+      <div class="levelup-banner" role="status" aria-live="polite">
+        <span aria-hidden="true" style="font-size:1.3rem">🔥</span>
+        <span class="levelup-text">Level up! New range: 1–20</span>
+      </div>
+
+      <main class="game-area" style="padding-top: var(--space-s)">
+        <p class="game-prompt">How many 🌟 do you see?</p>
+        <div class="objects-grid" aria-label="Stars to count, tap each one">
+          <div class="obj" role="button" aria-label="Star 1">🌟</div>
+          <div class="obj" role="button" aria-label="Star 2">🌟</div>
+          <div class="obj" role="button" aria-label="Star 3">🌟</div>
+          <div class="obj" role="button" aria-label="Star 4">🌟</div>
+          <div class="obj" role="button" aria-label="Star 5">🌟</div>
+          <div class="obj" role="button" aria-label="Star 6">🌟</div>
+          <div class="obj" role="button" aria-label="Star 7">🌟</div>
+          <div class="obj" role="button" aria-label="Star 8">🌟</div>
+          <div class="obj" role="button" aria-label="Star 9">🌟</div>
+          <div class="obj" role="button" aria-label="Star 10">🌟</div>
+          <div class="obj" role="button" aria-label="Star 11">🌟</div>
+          <div class="obj" role="button" aria-label="Star 12">🌟</div>
+        </div>
+        <div class="counter-display" aria-live="polite" aria-label="Count so far: 0">0</div>
+        <div class="counter-hint">Tap each star to count it</div>
+      </main>
+
+      <div class="btn-row">
+        <button class="btn btn-primary" aria-label="Submit my answer">Submit ✓</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

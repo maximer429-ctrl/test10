@@ -1,0 +1,152 @@
+<!--
+MOCKUP-ID: design-system
+Title: Design System Showcase
+Story: —
+Design-System-Refs: primary, secondary, accent, background, text-primary, radius-md, space-m
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Design System Showcase</title>
+<style>
+  /* CSS variables mapped from tokens (for demo only) */
+  :root{
+    --color-primary: #3B82F6;
+    --color-secondary: #F59E0B;
+    --color-accent: #10B981;
+    --color-background: #FFFFFF;
+    --color-surface: #F8FAFC;
+    --color-text: #0F172A;
+    --color-muted: #64748B;
+    --color-danger: #EF4444;
+    --focus-ring: #A78BFA;
+
+    --font-family: 'Poppins', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --h1: 2.25rem; --h2:1.75rem; --h3:1.25rem; --body:1rem; --caption:0.875rem;
+
+    --space-s: 12px; --space-m:16px; --space-l:24px;
+    --radius-md: 12px;
+    --shadow-1: 0 1px 2px rgba(15,23,42,0.06);
+  }
+  *{box-sizing:border-box}
+  body{font-family:var(--font-family);background:var(--color-background);color:var(--color-text);margin:0;padding:24px}
+  .container{max-width:980px;margin:0 auto}
+  header{display:flex;align-items:center;gap:12px}
+  .logo{width:56px;height:56px;background:var(--color-primary);border-radius:12px;display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+  h1{font-size:var(--h1);margin:0}
+  section{margin-top:var(--space-l)}
+
+  /* Buttons */
+  .btn{font-weight:600;border-radius:var(--radius-md);padding:10px 16px;cursor:pointer;min-height:44px;display:inline-flex;align-items:center;gap:8px;border:0}
+  .btn:focus{outline:3px solid var(--focus-ring);outline-offset:2px}
+  .btn-primary{background:var(--color-primary);color:var(--color-background)}
+  .btn-secondary{background:transparent;color:var(--color-text);border:2px solid var(--color-secondary)}
+  .btn-danger{background:var(--color-danger);color:var(--color-background)}
+
+  /* Cards */
+  .card{background:var(--color-surface);padding:var(--space-m);border-radius:var(--radius-md);box-shadow:var(--shadow-1)}
+  .card .title{font-size:var(--h3);margin-bottom:8px}
+
+  /* Inputs */
+  .field{display:flex;flex-direction:column;gap:8px}
+  input[type="text"], input[type="number"]{padding:10px;border-radius:8px;border:1px solid #E2E8F0;font-size:var(--body)}
+  input:focus{outline:3px solid var(--focus-ring);outline-offset:1px}
+  .helper{font-size:0.85rem;color:var(--color-muted)}
+
+  /* Progress */
+  .progress{background:#E6EEF9;border-radius:999px;height:16px;overflow:hidden}
+  .progress > span{display:block;height:100%;background:var(--color-accent);width:60%;transition:width 300ms ease}
+
+  /* Badges */
+  .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--color-accent);color:white;font-size:0.85rem}
+
+  /* Layout examples */
+  .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .col{flex:1}
+  @media(min-width:640px){.row-2{display:flex;gap:16px}}
+</style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">KS</div>
+      <div>
+        <h1>Design System Showcase</h1>
+        <div style="color:var(--color-muted);font-size:0.95rem">Friendly tokens & components for kids (demo)</div>
+      </div>
+    </header>
+
+    <section>
+      <h2 style="font-size:var(--h2);margin-bottom:12px">Buttons</h2>
+      <div class="row">
+        <button class="btn btn-primary" aria-label="Play">▶ Play</button>
+        <button class="btn btn-secondary" aria-label="Practice">Practice</button>
+        <button class="btn btn-danger" aria-label="Reset">Reset</button>
+      </div>
+    </section>
+
+    <section>
+      <h2 style="font-size:var(--h2);margin-bottom:12px">Card & Inputs</h2>
+      <div class="row-2">
+        <div class="card col" style="min-width:260px">
+          <div class="title">Lesson Card</div>
+          <p style="margin:0 0 12px 0;color:var(--color-muted);">Short description of the lesson with friendly tone.</p>
+          <div class="row">
+            <button class="btn btn-primary">Start</button>
+            <div style="flex:1"></div>
+            <span class="badge">+10 XP</span>
+          </div>
+        </div>
+
+        <div style="min-width:280px">
+          <label for="name">Player name</label>
+          <div class="field">
+            <input id="name" type="text" placeholder="Your name" aria-label="Player name" />
+            <div class="helper">Keep it short and friendly</div>
+          </div>
+
+          <div style="height:12px"></div>
+
+          <label for="attempts">Attempts</label>
+          <input id="attempts" type="number" value="3" aria-label="Attempts" />
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-top:24px">
+      <h2 style="font-size:var(--h2);margin-bottom:12px">Feedback & Progress</h2>
+      <div class="card" style="padding-bottom:16px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <div>
+            <div style="font-weight:700">Level progress</div>
+            <div style="color:var(--color-muted)">Keep it up — you're doing great!</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:1.25rem;font-weight:700">60%</div>
+            <div style="color:var(--color-muted)">Complete</div>
+          </div>
+        </div>
+        <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="60">
+          <span></span>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-top:24px">
+      <h2 style="font-size:var(--h2);margin-bottom:12px">Encouraging Failure Example</h2>
+      <div class="card">
+        <div style="font-weight:700">Oops — almost there!</div>
+        <p style="color:var(--color-muted);margin:8px 0">Try again or practice a simpler version to build confidence.</p>
+        <div class="row" style="margin-top:8px">
+          <button class="btn btn-primary" aria-label="Try again">Try again</button>
+          <button class="btn btn-secondary" aria-label="Practice">Practice</button>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>
