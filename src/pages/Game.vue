@@ -52,7 +52,8 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
+import { loadStats as loadStatsFromStorage, saveStats } from '../lib/persistence'
 
 const rounds = 3
 const round = ref(1)
@@ -96,6 +97,15 @@ function submit() {
   summaryVisible.value = true
 
   if (tapped === total && tapped > 0) correctRounds.value++
+
+  // persist session stats: increment rounds and record latest accuracy
+  try {
+    const prev = loadStatsFromStorage() || { rounds: 0, accuracy: 0 }
+    const newRounds = (prev.rounds || 0) + 1
+    saveStats({ rounds: newRounds, accuracy })
+  } catch (e) {
+    // noop
+  }
 }
 
 function nextRound() {
