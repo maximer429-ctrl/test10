@@ -3,7 +3,7 @@
     <AppHeader />
 
     <main class="app-shell">
-      <AppSidebar @open-profile="openProfile" />
+      <AppSidebar @open-profile="openProfile" @open-home="openHome" />
 
       <section class="content">
         <LandingPage @play="handlePlay" v-if="!showGame && !showProfile" />
@@ -53,6 +53,15 @@ function openProfile(){
   showGame.value = false
   // persist the current view so it survives refresh
   localStorage.setItem('ks_current_view', 'profile')
+}
+
+function openHome(){
+  // clear persisted view so Home becomes the default after reload
+  showProfile.value = false
+  showGame.value = false
+  showOnboarding.value = false
+  showConsent.value = false
+  localStorage.removeItem('ks_current_view')
 }
 
 

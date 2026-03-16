@@ -1,7 +1,7 @@
 <template>
   <aside class="sidebar">
     <ul>
-      <li><a class="active">🏠 Home</a></li>
+      <li><button class="link-btn" @click="$emit('open-home')">🏠 Home</button></li>
       <li><a>🎯 Practice</a></li>
       <li><a>🏆 Rewards</a></li>
       <li><button class="link-btn" @click="$emit('open-profile')">👪 Profile</button></li>
