@@ -20,10 +20,6 @@
           </div>
           <div class="actions">
             <button class="btn btn-outline" @click="toggleEdit">{{ isEditing ? 'Close' : 'Edit Profile' }}</button>
-            <div style="margin-left:8px;display:flex;flex-direction:column;gap:8px">
-              <button class="btn" @click="handleExport">Export data</button>
-              <button class="btn btn-secondary" @click="handleDelete">Delete data</button>
-            </div>
           </div>
         </div>
 
@@ -66,7 +62,6 @@
 
 <script setup>
 import { reactive, ref, onMounted } from 'vue'
-import * as persistence from '../lib/persistence'
 
 const avatars = [
   '/mockups/avatar-1.svg',
@@ -84,18 +79,22 @@ const isEditing = ref(false)
 
 function loadProfile(){
   // session storage always available
-  const p = persistence.loadProfile()
-  if (p) Object.assign(profile, p)
-  // load stats from persistence
-  const st = persistence.loadStats()
-  if (st) Object.assign(stats, st)
+  const s = sessionStorage.getItem('ks_profile')
+  if (s) Object.assign(profile, JSON.parse(s))
+  // load stats from session if present
+  const st = sessionStorage.getItem('ks_stats')
+  if (st) Object.assign(stats, JSON.parse(st))
   // populate recent with a simple sample or from stats
   recent.rounds = stats.rounds || 0
   recent.accuracy = stats.accuracy || 0
 }
 
 function save(){
-  persistence.saveProfile({ name: profile.name, avatar: profile.avatar, age: profile.age, level: profile.level })
+  sessionStorage.setItem('ks_profile', JSON.stringify(profile))
+  // persist across sessions only with parental consent
+  if (localStorage.getItem('ks_parent_consent') === 'true'){
+    localStorage.setItem('ks_profile', JSON.stringify(profile))
+  }
 }
 
 function reset(){
@@ -106,28 +105,6 @@ function reset(){
 function selectAvatar(a){ profile.avatar = a }
 
 function toggleEdit(){ isEditing.value = !isEditing.value }
-
-function handleExport(){
-  const data = persistence.exportData()
-  const blob = new Blob([data], { type: 'application/json' })
-  const url = URL.createObjectURL(blob)
-  const a = document.createElement('a')
-  a.href = url
-  a.download = 'kids-score-export.json'
-  document.body.appendChild(a)
-  a.click()
-  a.remove()
-  URL.revokeObjectURL(url)
-}
-
-function handleDelete(){
-  if (!confirm('Delete all local profile and stats data? This cannot be undone.')) return
-  persistence.deleteData()
-  reset()
-  Object.assign(stats, { rounds: 0, accuracy: 0 })
-  recent.rounds = 0
-  recent.accuracy = 0
-}
 
 onMounted(()=>{
   loadProfile()

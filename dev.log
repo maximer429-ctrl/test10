@@ -1,0 +1,60 @@
+
+> kids-score-frontend@0.1.0 dev
+> vite --host 0.0.0.0
+
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+
+  VITE v5.4.21  ready in 583 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: http://172.17.0.2:5173/
+10:12:22 AM [vite] page reload mockups/1.1.2-simple-addition.html
+12:01:11 PM [vite] hmr update /src/App.vue
+12:01:12 PM [vite] Internal server error: Failed to resolve import "./pages/Onboarding.vue" from "src/App.vue". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /workspace/src/App.vue:29:25
+  4  |  import CardBase from './components/CardBase.vue'
+  5  |  import LandingPage from './pages/Landing.vue'
+  6  |  import Onboarding from './pages/Onboarding.vue'
+     |                          ^
+  7  |  import ParentConsent from './pages/ParentConsent.vue'
+  8  |  
+      at TransformPluginContext._formatError (file:///workspace/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41)
+      at TransformPluginContext.error (file:///workspace/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16)
+      at normalizeUrl (file:///workspace/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23)
+      at async file:///workspace/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+      at async Promise.all (index 5)
+      at async TransformPluginContext.transform (file:///workspace/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7)
+      at async PluginContainer.transform (file:///workspace/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///workspace/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///workspace/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+12:01:27 PM [vite] page reload src/pages/Onboarding.vue
+12:01:27 PM [vite] Pre-transform error: Failed to resolve import "./pages/ParentConsent.vue" from "src/App.vue". Does the file exist?
+12:01:28 PM [vite] Internal server error: Failed to resolve import "./pages/ParentConsent.vue" from "src/App.vue". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /workspace/src/App.vue:30:28
+  5  |  import LandingPage from './pages/Landing.vue'
+  6  |  import Onboarding from './pages/Onboarding.vue'
+  7  |  import ParentConsent from './pages/ParentConsent.vue'
+     |                             ^
+  8  |  
+  9  |  import { ref } from 'vue'
+      at TransformPluginContext._formatError (file:///workspace/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41)
+      at TransformPluginContext.error (file:///workspace/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16)
+      at normalizeUrl (file:///workspace/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23)
+      at async file:///workspace/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+      at async Promise.all (index 6)
+      at async TransformPluginContext.transform (file:///workspace/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7)
+      at async PluginContainer.transform (file:///workspace/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///workspace/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///workspace/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+12:01:41 PM [vite] page reload src/pages/ParentConsent.vue
+[1m[33m[@vue/compiler-sfc][0m[33m `defineEmits` is a compiler macro and no longer needs to be imported.[0m
+
+12:06:33 PM [vite] page reload index.html
+12:07:02 PM [vite] hmr update /src/pages/Landing.vue?vue&type=style&index=0&scoped=ae8ce900&lang.css, /src/pages/Landing.vue
+12:58:25 PM [vite] hmr update /src/components/AppSidebar.vue
+12:58:41 PM [vite] hmr update /src/App.vue
+1:05:54 PM [vite] hmr update /src/App.vue
+1:09:38 PM [vite] hmr update /src/pages/Profile.vue
+1:09:49 PM [vite] hmr update /src/App.vue
