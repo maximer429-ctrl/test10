@@ -24,8 +24,8 @@
       </main>
 
       <div class="btn-row">
-        <button class="btn btn-primary" @click="submit">Submit ✓</button>
-        <button class="btn btn-secondary" @click="reset">Reset</button>
+        <BaseButton @click="submit">Submit ✓</BaseButton>
+        <BaseButton variant="secondary" @click="reset">Reset</BaseButton>
       </div>
     </div>
   </section>
@@ -33,6 +33,7 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import BaseButton from '../components/BaseButton.vue'
 
 const rounds = 3
 const round = ref(1)

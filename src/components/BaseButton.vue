@@ -4,9 +4,12 @@
 
 <script setup>
 import { computed } from 'vue'
-defineProps({ variant: { type: String, default: 'primary' }, disabled: { type: Boolean, default: false } })
 
-const props = defineProps(['variant','disabled'])
+const props = defineProps({
+  variant: { type: String, default: 'primary' },
+  disabled: { type: Boolean, default: false }
+})
+
 const btnClass = computed(() => ['btn', props.variant === 'secondary' ? 'btn-secondary' : 'btn-primary'])
 </script>
 
