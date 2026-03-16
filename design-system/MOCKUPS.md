@@ -3,3 +3,8 @@
 [1.1.1]|mockups/1.1.1-counting-game.html|ready
 [4.1.1]|mockups/4.1.1-landing-page.html|ready
 [1.1.2]|mockups/1.1.2-simple-addition.html|pending
+[2.3.1]|mockups/2.3.1-profile-view.html|pending
+[2.3.2]|mockups/2.3.2-edit-profile.html|pending
+[2.3.3]|mockups/2.3.3-parental-controls.html|pending
+[2.3.4]|mockups/2.3.4-data-export-deletion.html|pending
+[2.3.5]|mockups/2.3.5-multiple-profiles.html|pending

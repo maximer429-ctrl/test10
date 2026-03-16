@@ -1,0 +1,61 @@
+<!--
+MOCKUP-ID: 2.3.2
+Title: Edit Profile
+Story: 2.3.2
+Design-System-Refs: inputs, avatars, validation, buttons, surface, text-muted
+Notes:
+  - Shows editing display name, avatar selection, validation rules, and persistence options
+-->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mockup 2.3.2 — Edit Profile</title>
+<style>
+:root{--bg:#FFFFFF;--surface:#F8FAFC;--text:#0F172A;--muted:#64748B;--primary:#3B82F6;--space:14px}
+body{font-family:Poppins,Segoe UI,Roboto,Arial,sans-serif;margin:0;background:#FAFBFF;color:var(--text);padding:var(--space)}
+.card{max-width:520px;margin:0 auto;background:var(--surface);padding:var(--space);border-radius:12px;border:1px solid #E6EDF8}
+.row{display:flex;gap:12px;align-items:center}
+.label{font-size:0.9rem;color:var(--muted);margin-bottom:6px}
+.input{width:100%;padding:10px;border-radius:8px;border:1px solid #DCE9FF;background:#fff}
+.avatar-grid{display:flex;gap:8px;margin-top:8px}
+.avatar-opt{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid transparent;cursor:pointer}
+.avatar-opt.sel{border-color:var(--primary)}
+.note{font-size:0.85rem;color:var(--muted);margin-top:8px}
+.err{color:#B91C1C;font-weight:700;font-size:0.9rem;margin-top:8px}
+.actions{display:flex;gap:8px;justify-content:flex-end;margin-top:12px}
+.btn{padding:10px 12px;border-radius:10px;border:none;font-weight:700}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-ghost{background:transparent;border:2px solid #E6EDF8}
+</style>
+</head>
+<body>
+  <div class="card" role="region" aria-label="Edit Profile">
+    <div style="font-weight:700;font-size:1.1rem;margin-bottom:6px">Edit Profile</div>
+    <div class="label">Display name</div>
+    <input class="input" type="text" aria-label="Display name" value="Alex" maxlength="20" />
+    <div class="label">Choose an avatar</div>
+    <div class="avatar-grid" role="list">
+      <div class="avatar-opt sel" role="button" aria-pressed="true">🙂</div>
+      <div class="avatar-opt" role="button">🦊</div>
+      <div class="avatar-opt" role="button">🦄</div>
+      <div class="avatar-opt" role="button">🐙</div>
+    </div>
+    <div class="note">Names limited to 20 characters. Disallowed characters: emojis and markup.</div>
+    <div class="err" aria-live="assertive" style="display:none">Invalid characters removed</div>
+
+    <div style="margin-top:10px" class="label">Persistence</div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <input type="checkbox" id="persist" aria-describedby="persist-desc" />
+      <label for="persist">Persist across sessions (requires parental consent)</label>
+    </div>
+    <div id="persist-desc" class="note">Toggle requires parental consent to enable full account storage.</div>
+
+    <div class="actions">
+      <button class="btn btn-ghost">Cancel</button>
+      <button class="btn btn-primary">Save</button>
+    </div>
+  </div>
+</body>
+</html>
