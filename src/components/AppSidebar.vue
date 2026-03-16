@@ -6,10 +6,15 @@
       <li><a>🏆 Rewards</a></li>
       <li><button class="link-btn" @click="$emit('open-profile')">👪 Profile</button></li>
     </ul>
+
+    <div style="margin-top:12px">
+      <ProfileManager @profile-changed="$emit('profile-changed')" />
+    </div>
   </aside>
 </template>
 
 <script setup>
+import ProfileManager from './ProfileManager.vue'
 </script>
 
 <style scoped>

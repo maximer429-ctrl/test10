@@ -3,7 +3,7 @@
     <AppHeader />
 
     <main class="app-shell">
-      <AppSidebar @open-profile="openProfile" @open-home="openHome" />
+      <AppSidebar @open-profile="openProfile" @open-home="openHome" @profile-changed="onProfileChanged" />
 
       <section class="content">
         <LandingPage @play="handlePlay" v-if="!showGame && !showProfile" />
@@ -85,6 +85,14 @@ function onConsented() {
   consentGiven.value = true
   localStorage.setItem('ks_parent_consent', 'true')
   startGame()
+}
+
+function onProfileChanged(){
+  // force Profile view to reload so it picks up the new active profile
+  if (showProfile.value) {
+    showProfile.value = false
+    setTimeout(()=> { showProfile.value = true }, 0)
+  }
 }
 </script>
 
