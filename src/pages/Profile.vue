@@ -19,7 +19,7 @@
             </div>
           </div>
           <div class="actions">
-            <button class="btn btn-secondary" @click="toggleEdit">{{ isEditing ? 'Close' : 'Edit Profile' }}</button>
+            <button class="btn btn-outline" @click="toggleEdit">{{ isEditing ? 'Close' : 'Edit Profile' }}</button>
           </div>
         </div>
 
@@ -116,33 +116,34 @@ onMounted(()=>{
 *{box-sizing:border-box}
 .profile-root{padding:var(--space)}
 .container{max-width:920px;margin:0 auto}
-.card{background:var(--surface);padding:var(--space);border-radius:12px;border:1px solid rgba(230,237,248,0.9)}
+.card{background:var(--surface);padding:var(--space);border-radius:12px;border:1px solid #E6EDF8}
 .header{display:flex;gap:16px;align-items:center}
-.avatar-large{width:96px;height:96px;border-radius:50%;background:#fff;border:4px solid var(--bg);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.avatar-large{width:96px;height:96px;border-radius:50%;background:#fff;border:4px solid #FFFFFF;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 4px 8px rgba(15,23,42,0.04)}
 .avatar-large img{width:100%;height:100%;object-fit:cover}
 .info{flex:1}
 .name{font-weight:700;font-size:1.25rem}
-.meta{color:var(--muted);font-size:0.9rem}
+.meta{color:var(--muted);font-size:0.9rem;margin-top:4px}
 .stats{display:flex;gap:12px;margin-top:12px}
-.stat{background:var(--bg);padding:10px;border-radius:10px;flex:1;text-align:center;border:1px solid rgba(233,242,255,0.9)}
-.stat-value{font-weight:700}
+.stat{background:var(--bg);padding:10px;border-radius:10px;flex:1;text-align:center;border:1px solid #E9F2FF}
+.stat-value{font-weight:700;font-size:1.1rem}
 .badges{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
-.badge{background:var(--accent);color:#fff;padding:6px 10px;border-radius:999px;font-weight:700}
-.actions{min-width:110px}
-.btn{padding:8px 12px;border-radius:10px;border:none;background:#f1f5f9}
-.btn.primary{background:var(--primary);color:#fff}
-.btn.outline{background:#fff;border:2px solid var(--primary)}
+.badge{background:var(--color-accent);color:#fff;padding:6px 10px;border-radius:999px;font-weight:700;font-size:0.85rem}
+.actions{min-width:120px;display:flex;align-items:flex-start}
+.btn{padding:8px 12px;border-radius:10px;border:none;background:#f1f5f9;font-weight:700}
+.btn.btn-primary{background:var(--color-primary);color:#fff}
+.btn.btn-outline{background:#fff;border:2px solid var(--color-primary);color:var(--color-primary);font-weight:700}
+.btn.btn-secondary{background:transparent;border:2px solid var(--color-secondary);color:var(--color-text)}
 .btn.ghost{background:transparent;border:1px solid rgba(0,0,0,0.06)}
 .edit-section{margin-top:12px}
 .avatar-list{display:flex;gap:8px;margin:8px 0}
 .avatar-btn{border:2px solid transparent;padding:4px;border-radius:8px;background:transparent}
-.avatar-btn.selected{border-color:var(--primary)}
+.avatar-btn.selected{border-color:var(--color-primary)}
 .avatar-btn img{width:48px;height:48px;border-radius:8px}
 .save-row{display:flex;gap:8px;margin-top:12px}
 .recent-row{display:flex;gap:12px;align-items:center}
 .progress-wrap{flex:1}
-.progress-bar{height:10px;background:rgba(230,237,248,0.9);border-radius:99px;overflow:hidden}
-.progress-fill{height:100%;background:var(--accent);width:0}
+.progress-bar{height:10px;background:#E6EDF8;border-radius:99px;overflow:hidden}
+.progress-fill{height:100%;background:var(--color-accent);width:0}
 .small{font-size:0.9rem;color:var(--muted)}
 
 @media(max-width:700px){.header{flex-direction:column;align-items:flex-start}.actions{align-self:flex-end}}
