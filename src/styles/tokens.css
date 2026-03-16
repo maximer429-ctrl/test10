@@ -1,0 +1,33 @@
+:root{
+  /* Colors */
+  --color-primary: #3B82F6;
+  --color-secondary: #F59E0B;
+  --color-accent: #10B981;
+  --color-background: #FFFFFF;
+  --color-surface: #F8FAFC;
+  --color-text: #0F172A;
+  --color-muted: #64748B;
+  --border: #E2E8F0;
+  --shadow-1: rgba(15,23,42,0.06);
+  --shadow-2: rgba(15,23,42,0.10);
+  --success: #10B981;
+  --danger: #EF4444;
+  --focus-ring: #A78BFA;
+  --muted-fill: #EFF6FF;
+
+  /* Typography */
+  --font-family: Poppins, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --h1: 2.25rem; --h2:1.75rem; --h3:1.25rem; --body:1rem; --caption:0.875rem;
+
+  /* Spacing */
+  --space-xxs:4px; --space-xs:8px; --space-s:12px; --space-m:16px; --space-l:24px; --space-xl:32px; --space-xxl:48px;
+
+  /* Radii */
+  --radius-sm:6px; --radius-md:12px; --radius-lg:18px;
+
+  /* Layout */
+  --tap-min:44px;
+}
+
+html,body{height:100%}
+body{font-family:var(--font-family);background:var(--color-background);color:var(--color-text);margin:0}

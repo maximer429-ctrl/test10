@@ -1,0 +1,13 @@
+{
+  "name": "KidsScore Dev Container",
+  "dockerFile": "../Dockerfile",
+  "workspaceFolder": "/workspace",
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "forwardPorts": [5173],
+  "extensions": [
+    "octref.vetur",
+    "esbenp.prettier-vscode"
+  ]
+}
